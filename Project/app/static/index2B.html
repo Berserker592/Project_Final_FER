@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmotionVisia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+</head>
+<body class="bg-gray-100 flex">
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="bg-white text-black h-screen w-16 transition-all duration-300 overflow-hidden">
+        <div class="flex flex-col items-center py-4">
+            <!-- Botón de expansión -->
+            <button id="toggleBtn" class="mb-4 p-2 hover:bg-blue-200 rounded">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Menú" class="w-6">
+            </button>
+
+            <!-- Opciones -->
+            <div class="flex flex-col space-y-4">
+                <a href="#" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="goBackToIndex()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/69/69524.png" alt="Vista" class="w-6">
+                    <span class="hidden sidebar-text" >Inicio</span>
+                </a>
+
+                <a href="#" id="startanalisis" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="startStream()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4115/4115681.png" alt="Vista" class="w-6">
+                    <span class="hidden sidebar-text" >Iniciar Analisis</span>
+                </a>
+
+                <a href="#" id="analyzeVideoBtn" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="playStream()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4185/4185236.png" alt="Vista" class="w-6">
+                    <span class="hidden sidebar-text" >Cargar Video</span>
+                </a>
+
+                <a href="#" id="ReportsButton" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="fetchReports()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1358/1358533.png" alt="Archivo" class="w-6">
+                    <span class="hidden sidebar-text">Reportes</span>
+                </a>
+
+                <a href="#" id="toggle-btn" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="toggleAnalysis()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3669/3669483.png" alt="Archivo" class="w-6">
+                    <span class="hidden sidebar-text">Pausar Analisis</span>
+                </a>
+
+                <a href="#" id="saveButton" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="stopRecording()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/568/568717.png" alt="Archivo" class="w-6">
+                    <span class="hidden sidebar-text">Guardar Video & Reporte</span>
+                </a>
+
+                <a href="#" id="saveButton2" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="stopRecordingR()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/568/568717.png" alt="Archivo" class="w-6">
+                    <span class="hidden sidebar-text">Guardar Reporte</span>
+                </a>
+
+                <a href="#" id="startButton2" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="startNewAnalysis()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4115/4115681.png" alt="Vista" class="w-6">
+                    <span class="hidden sidebar-text" >Nuevo Analisis</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        <header>
+            <h1>Análisis de Emociones</h1>
+            <!--<p>Aquí puedes agregar el contenido de tu página.</p>-->
+        </header>
+        
+        <div class="wrapper">
+            <div class="one">
+                <img id="placeholder" class="video-container" src="https://img.freepik.com/vector-gratis/cientificos-personas-diminutas-identifican-emociones-mujeres-partir-voz-rostro-deteccion-emociones-reconocimiento-estado-emocional-concepto-tecnologia-sensor-emo_335657-2442.jpg?t=st=1735614440~exp=1735618040~hmac=a283e592529d7edc65c66b8a992dc43b1373f2c31dd37c3f8d6d34575bff20e4&w=1060" alt="Esperando video..." style="width: 100%; display: block;">
+                <video id="video" class="video-container" autoplay style="display: none;"></video>
+                <video id="uploadedVideo" class="video-container" controls width="400" autoplay style="display: none;"></video>  
+            </div>
+    
+            <div class="two">
+                <canvas id="emotionChart" class="chart" width="400" height="265"></canvas>                
+            </div>
+        </div>
+    
+            
+        <input id="videoUpload" type="file" class="btn" accept="video/*" />
+        <input type="text" id="patientName" class="btn" placeholder="Nombre: Nombre Apellido" />                
+        
+        <div class="wrapper2">
+            <div class="one2">
+                <p id="NumeroPersonas">Persona Detectada: 0</p>
+            </div>
+    
+            <div class="two2">
+                <p id="emotion">Emoción detectada: Ninguna</p>
+            </div>
+            
+            <div class="three2">
+                <p id="percentage">Porcentaje: 0%</p> 
+            </div>
+
+            <div class="four2">
+                <p id="endan">Tiempo: 0:0:0</p>
+            </div>
+        </div>
+        
+        <div class="charts-container">
+            <div class="chart" id="chart2">
+                <canvas id="emotionPolarChart" width="400" height="400"></canvas>
+            </div>
+
+            <div class="chart_report" id="chart3">
+                <canvas id="emotionScatterChart" width="400" height="300"></canvas>  
+            </div>
+        </div>
+
+
+        <div class="report-container ">
+            <!-- Columna de Videos -->
+            <div class="column" id="video-column" autoplay style="display: none;">
+                <h2>Videos</h2>
+            </div>
+    
+            <!-- Columna de Reportes -->
+            <div class="column" id="report-column" autoplay style="display: none;">
+                <h2>Reportes</h2>
+            </div>
+        </div>
+    </div>
+
+    <ul id="report-list"></ul>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+
+    <!-- Script para la animación -->
+    <script>
+        document.getElementById("toggleBtn").addEventListener("click", function() {
+            let sidebar = document.getElementById("sidebar");
+            let texts = document.querySelectorAll(".sidebar-text");
+
+            if (sidebar.classList.contains("w-16")) {
+                sidebar.classList.remove("w-16");
+                sidebar.classList.add("w-48");
+                texts.forEach(text => text.classList.remove("hidden"));
+            } else {
+                sidebar.classList.remove("w-48");
+                sidebar.classList.add("w-16");
+                texts.forEach(text => text.classList.add("hidden"));
+            }
+        });
+    </script>
+
+</body>
+</html>

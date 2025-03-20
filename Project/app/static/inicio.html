@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmotionVisia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <a href="#inicio" class = "btnret" onclick="goBackToIndex()" >Inicio</a></li>
+            <a href="#acerca-de" class = "btnret">Acerca de</a></li>
+            <a href="#contacto" class = "btnret">Contacto</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+
+        <header>
+            <h1>Análisis de Emociones</h1>
+            <!--<p>Analiza emociones en tiempo real.</p>-->
+        </header>
+
+        <!--<div style="position: relative; left: -300px">
+            <button onclick="goBackToIndex()" class="btn">
+                Regresar a Inicio
+            </button>
+        </div>-->
+
+        <div class="wrapper">
+            <div class="one">
+                <img id="placeholder" class="video-container" src="https://img.freepik.com/vector-gratis/cientificos-personas-diminutas-identifican-emociones-mujeres-partir-voz-rostro-deteccion-emociones-reconocimiento-estado-emocional-concepto-tecnologia-sensor-emo_335657-2442.jpg?t=st=1735614440~exp=1735618040~hmac=a283e592529d7edc65c66b8a992dc43b1373f2c31dd37c3f8d6d34575bff20e4&w=1060" alt="Esperando video..." style="width: 100%; display: block;">
+                <video id="video" class="video-container" autoplay style="display: none;"></video>
+                <video id="uploadedVideo" class="video-container" controls width="400" autoplay style="display: none;"></video>  
+            </div>
+    
+            <div class="two">
+                <p id="NumeroPersonas">Persona Detectada: 0</p>
+                <p id="endan">Tiempo: 0:0:0</p>
+                <p id="emotion">Emoción detectada: Ninguna</p>
+                <p id="percentage">Porcentaje: 0%</p> 
+            </div>
+    
+            <div class="three">
+                <button id="startanalisis" class="btn" onclick="startStream()">Iniciar Análisis</button>
+                <button id="saveButton" class="btn" onclick="stopRecording()">Guardar</button>
+                <button id="startButton2" class="btn" onclick="startStream() ">Nuevo Analisis</button>
+            </div>
+            
+            <div class="four">
+                <button id="analyzeVideoBtn" class="btn" onclick="playStream()">Analizar Video</button>
+                <button id="toggle-btn" class="btn" onclick="toggleAnalysis()">Pausar</button>
+            
+            </div>
+             
+            <div class="five">
+                 <button id="ReportsButton" class="btn" onclick="fetchReports() ">Ver Reportes</button>
+            </div>
+
+        </div>
+        
+        <input id="videoUpload" type="file" class="btn" accept="video/*" />
+        <input type="text" id="patientName" class="btn" placeholder="Nombre: Nombre Apellido" />                
+        
+
+        
+        <div class="charts-container">
+            <div class="chart" id="chart2">
+                <canvas id="emotionChart" width="600" height="300" ></canvas>                
+            </div>
+            <div class="chart" id="chart3">
+                 <canvas id="emotionPolarChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+
+        <div class="chart_report">
+            <canvas id="emotionScatterChart" width="400" height="300"></canvas>  
+        </div>
+
+        <div class="report-container ">
+            <!-- Columna de Videos -->
+            <div class="column" id="video-column" autoplay style="display: none;">
+                <h2>Videos</h2>
+            </div>
+    
+            <!-- Columna de Reportes -->
+            <div class="column" id="report-column" autoplay style="display: none;">
+                <h2>Reportes</h2>
+            </div>
+        </div>
+        
+
+    </div>
+    <ul id="report-list"></ul>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+</body>
+</html>

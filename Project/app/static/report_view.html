@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmotionVisia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles2.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+</head>
+<body class="bg-gray-100 flex">
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="bg-white text-black h-screen w-16 transition-all duration-300 overflow-hidden">
+        <div class="flex flex-col items-center py-4">
+            <!-- Botón de expansión -->
+            <button id="toggleBtn" class="mb-4 p-2 hover:bg-blue-200 rounded">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Menú" class="w-6">
+            </button>
+
+            <!-- Opciones -->
+            <div class="flex flex-col space-y-4">
+                <a href="#" class="flex items-center space-x-2 hover:bg-blue-200 p-2 rounded" onclick="goBackToIndex()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/69/69524.png" alt="Vista" class="w-6">
+                    <span class="hidden sidebar-text" >Inicio</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Reporte Detallado</h1><span id="Reportename"></span>
+        </header>
+        <canvas id="emotionChart" class="chart" width="auto"></canvas><br>
+        <canvas id="emotionPieChart" class="chart_report"></canvas><br>
+
+
+<!--        <div class="wrapper">
+            <div class="one">
+            </div>
+    
+            <div class="two">
+            </div>
+        </div>-->
+
+        <div id="details">
+            <p><strong>Emoción Predominante:</strong> <span id="dominantEmotion"></span></p><br>
+            <p><strong>Cambios Abruptos Detectados:</strong> <span id="abruptChanges"></span></p>
+        </div>
+    </div>
+    
+    
+    <script src="report_view2.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Script para la animación -->
+    <script>
+        document.getElementById("toggleBtn").addEventListener("click", function() {
+            let sidebar = document.getElementById("sidebar");
+            let texts = document.querySelectorAll(".sidebar-text");
+
+            if (sidebar.classList.contains("w-16")) {
+                sidebar.classList.remove("w-16");
+                sidebar.classList.add("w-48");
+                texts.forEach(text => text.classList.remove("hidden"));
+            } else {
+                sidebar.classList.remove("w-48");
+                sidebar.classList.add("w-16");
+                texts.forEach(text => text.classList.add("hidden"));
+            }
+        });
+    </script>
+</body>
+</html>
