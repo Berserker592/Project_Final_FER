@@ -261,7 +261,7 @@ function initializeCharts() {
 function startWebSocket() {
     const token = document.getElementById('tokenInput').value;
     
-    ws = new WebSocket(`ws://${path2}/ws/${token}`);
+    ws = new WebSocket(`wss://${path2}/ws/${token}`);
     isWsConnected = true;
     
     ws.onmessage = event => {
