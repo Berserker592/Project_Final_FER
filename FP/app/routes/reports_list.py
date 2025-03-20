@@ -1,10 +1,8 @@
 from fastapi import APIRouter
 import os
-from functions.path import path_ret
 
 router = APIRouter()
 
-path = path_ret()
 
 @router.get("/list-reports/")
 async def list_reports():
