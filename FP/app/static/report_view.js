@@ -182,5 +182,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function goBackToIndex() {
     // Redirigir a index2.html
-    window.location.href = "index2.html";
+    window.location.href = "main.html";
 }
