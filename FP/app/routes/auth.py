@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Form
 from fastapi.responses import JSONResponse
-from app.Encryption.Token_decod import validation_token
+from Encryption.Token_decod import validation_token
 
 validatetoken = APIRouter()
 

@@ -6,10 +6,8 @@ let recordedChunks = [];
 let isRecording = false; // Estado para controlar la grabación
 let emotionChart, emotionScatterChart, emotionPolarChart; // Variables globales para los gráficos
 
-//let path = 'https://emotionvisia.com';
-//let path2 = 'emotionvisia.com';
-let path = 'http://127.0.0.1:8000';
-let path2 = '127.0.0.1:8000';
+let path = 'https://emotionvisia.com';
+let path2 = 'emotionvisia.com';
 
 
 const emotionData = {};

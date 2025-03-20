@@ -1,7 +1,7 @@
 # Facial_detect.py
 import cv2
 import numpy as np
-import base64
+#import base64
 
 # Cargar el clasificador en cascada para la detección de rostros
 #Servidor
@@ -9,7 +9,7 @@ import base64
 #    haar_cascade = cv2.CascadeClassifier('/app/haar_face.xml')
 #except:
 #Local
-haar_cascade = cv2.CascadeClassifier('app/haar_face.xml')
+haar_cascade = cv2.CascadeClassifier('/app/haar_face.xml')
 
 def mostrar_frame(frame,frame2,lap, sobelx, sobely, cmbined_sobel, canny):
     cv2.imshow("Imagen",frame)

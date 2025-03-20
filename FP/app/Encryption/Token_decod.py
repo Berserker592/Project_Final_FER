@@ -1,7 +1,6 @@
 from jwt import decode
 from jwt import exceptions
 from os import getenv
-from datetime import datetime, timedelta
 from flask import jsonify
 from dotenv import load_dotenv
 load_dotenv()

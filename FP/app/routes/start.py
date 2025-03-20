@@ -14,4 +14,4 @@ path = path_ret()
 @get_start.get("/")
 def get_frontend():
 #Aumentar / en el directorio para el servidor
-    return FileResponse(f"{path}static/index.html")
+    return FileResponse("/app/static/index.html")

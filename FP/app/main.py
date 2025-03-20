@@ -23,9 +23,9 @@ app.include_router(validatetoken,prefix="")
 
 #Montar la carpeta de archivos esenciales
 #Local
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
-app.mount("/Reportes", StaticFiles(directory="app/Archivos/Reportes"), name="Reportes")
-app.mount("/Videos", StaticFiles(directory="app/Archivos/Videos"), name="Videos")
+app.mount("/static", StaticFiles(directory="/app/static"), name="static")
+app.mount("/Reportes", StaticFiles(directory="/app/Archivos/Reportes"), name="Reportes")
+app.mount("/Videos", StaticFiles(directory="/app/Archivos/Videos"), name="Videos")
 
 
 # Habilitar CORS
@@ -40,7 +40,7 @@ app.add_middleware(
 
 @app.get("/")
 def get_frontend():
-    return FileResponse("app/static/index.html")
+    return FileResponse("/app/static/index.html")
 
 # Crear carpeta para reportes y videos
 #os.makedirs("Archivos/Reportes", exist_ok=True)
@@ -168,8 +168,8 @@ async def save_analysis(
     #timestamp1 = timestamp()
     timestamp = datetime.now(zh_ecuador).strftime("%Y%m%d_%H:%M:%S")
     
-    report_path = f"app/Archivos/Reportes/RP_{Input_Name}_{timestamp}.csv"
-    video_path = f"app/Archivos/Videos/VD_{Input_Name}_{timestamp}.webm"
+    report_path = f"/app/Archivos/Reportes/RP_{Input_Name}_{timestamp}.csv"
+    video_path = f"/app/Archivos/Videos/VD_{Input_Name}_{timestamp}.webm"
     
     #video_path = f"Videos/{video.filename}"#captured_video.webm
     
@@ -222,7 +222,7 @@ async def save_analysis(
     #timestamp1 = timestamp()
     timestamp = datetime.now(zh_ecuador).strftime("%Y%m%d_%H%M%S")
     
-    report_path = f"app/Archivos/Reportes/RP_{Input_Name}_{timestamp}.csv"
+    report_path = f"/app/Archivos/Reportes/RP_{Input_Name}_{timestamp}.csv"
     
     #video_path = f"Videos/{video.filename}"#captured_video.webm
     

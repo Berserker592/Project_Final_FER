@@ -2,11 +2,10 @@ import pandas as pd
 from pathlib import Path
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
-from app.functions.path import path_ret
 
-path = path_ret()
+
 # Ruta donde se almacenan los reportes CSV
-REPORTS_DIR = Path(f"{path}Archivos/Reportes")
+REPORTS_DIR = Path("/app/Archivos/Reportes")
 
 
 #@app.get("/get-report/{report_name}")
