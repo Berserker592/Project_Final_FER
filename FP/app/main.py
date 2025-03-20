@@ -83,7 +83,7 @@ async def websocket_endpoint(websocket: WebSocket, token: str):
             #Modulo de deteccion de rostros
             N_personas, faces_roi, Ubicacion = await Deteccion(frame_data)          
            
-            if analyzing:
+            if N_personas == '1':
                 
                 # Modulo de deteccion de emociones 
                 percentage, emotion, emociones = await emotion_analize(faces_roi)

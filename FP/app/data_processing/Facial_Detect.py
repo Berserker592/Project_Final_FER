@@ -67,5 +67,5 @@ async def Deteccion(frame_data: str):
 
     except Exception as e:
         i = i+1
-        return 0, frame, [0,0,0,0]
+        return '0', frame, [0,0,0,0]
      
