@@ -1,5 +1,5 @@
 # Usar una imagen base de Python para el backend
-FROM python:3.11-slim
+FROM python:3.11.2
 
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
