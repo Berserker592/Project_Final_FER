@@ -7,13 +7,13 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, WebSocket, UploadFile, File, Form, WebSocketDisconnect
 
-from app.Encryption.Token_decod import validation_token
-from app.data_processing.Facial_Detect import Deteccion
-from app.data_processing.Emotion_detect import emotion_analize
+from Encryption.Token_decod import validation_token
+from data_processing.Facial_Detect import Deteccion
+from data_processing.Emotion_detect import emotion_analize
 
-from app.routes.report_obtain import router as report_obtain
-from app.routes.reports_list import router as report_list
-from app.routes.auth import validatetoken
+from routes.report_obtain import router as report_obtain
+from routes.reports_list import router as report_list
+from routes.auth import validatetoken
 
 app = FastAPI()
 
