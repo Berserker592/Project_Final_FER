@@ -470,7 +470,7 @@ function startStream() {
 
 //No Utilizado todavia
 function startNewAnalysis() {
-    window.location.href = "index2.html";
+    window.location.href = "main.html";
 }
 
 function playStream(){
