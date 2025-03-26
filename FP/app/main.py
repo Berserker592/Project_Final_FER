@@ -61,7 +61,7 @@ async def websocket_endpoint(websocket: WebSocket, token: str):
     #start_an = time_start()
     #end_an = time_end()
     start_an = datetime.now(zh_ecuador)
-    time_end = start_an + timedelta(minutes=25)
+    time_end = start_an + timedelta(minutes=50)
     
     validation_result = validation_token(token,ouput=True)
 
