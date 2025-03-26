@@ -70,6 +70,7 @@ async def websocket_endpoint(websocket: WebSocket, token: str):
         await websocket.close()
         return
     else:
+        emotion_log = []
         await websocket.accept()
     
 
